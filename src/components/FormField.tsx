@@ -10,11 +10,13 @@ interface FormFieldProps {
 const FormField: React.FC<FormFieldProps> = ({ label, children, required = false }) => {
   return (
     <div className="mb-6">
-      <label className="block text-gray-700 font-medium mb-2">
+      <label className="block text-gray-800 font-semibold mb-3 text-lg">
         {label}
         {required && <span className="text-red-500 ml-1">*</span>}
       </label>
-      {children}
+      <div className="relative">
+        {children}
+      </div>
     </div>
   );
 };

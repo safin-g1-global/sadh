@@ -168,22 +168,24 @@ const HealthRiskForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <Header />
       
       <main className="max-w-6xl mx-auto px-6 py-12">
         {currentStep < 4 && (
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-blue-900 mb-4">Take the Risk Test</h1>
-              <p className="text-gray-600 text-lg">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8 mb-8">
+            <div className="text-center mb-10">
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                Take the Risk Test
+              </h1>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
                 Please fill in this short form so that we can send you a detailed report for your health.
               </p>
             </div>
             
             <ProgressIndicator currentStep={currentStep} totalSteps={3} />
             
-            <div className="transition-all duration-300 ease-in-out">
+            <div className="transition-all duration-500 ease-in-out">
               {renderStep()}
             </div>
           </div>

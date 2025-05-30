@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Heart, Activity, AlertTriangle } from 'lucide-react';
 
 interface ResultsStepProps {
   demographicData: any;
@@ -58,90 +58,132 @@ const ResultsStep: React.FC<ResultsStepProps> = ({
     return 'High Risk';
   };
 
+  const getDiabetesRiskColor = (score: number) => {
+    if (score <= 3) return 'from-green-500 to-emerald-600';
+    if (score <= 6) return 'from-yellow-500 to-orange-500';
+    return 'from-red-500 to-pink-600';
+  };
+
+  const getHeartRiskColor = (score: number) => {
+    if (score <= 1) return 'from-green-500 to-emerald-600';
+    if (score <= 3) return 'from-yellow-500 to-orange-500';
+    return 'from-red-500 to-pink-600';
+  };
+
   const currentDate = new Date().toLocaleDateString();
 
   return (
-    <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
-      <div className="flex justify-between items-start mb-8">
-        <h2 className="text-3xl font-bold text-blue-900">Risk Test Results</h2>
+    <div className="max-w-5xl mx-auto bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 p-10">
+      <div className="flex justify-between items-start mb-10">
+        <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+          Risk Assessment Results
+        </h2>
         <Button 
           onClick={onReset}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2"
+          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
         >
-          Go to Home
+          Start Over
         </Button>
       </div>
 
-      <div className="bg-gray-50 rounded-lg p-6 mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          <div>
-            <h3 className="font-semibold text-gray-700 mb-2">Participant Name:</h3>
-            <p className="text-blue-600 font-semibold text-lg">
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 mb-10 border border-blue-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="bg-white rounded-xl p-6 shadow-md">
+            <h3 className="font-semibold text-gray-700 mb-3 text-lg">Participant Name</h3>
+            <p className="text-blue-600 font-bold text-xl">
               {demographicData.firstName} {demographicData.lastName}
             </p>
           </div>
-          <div>
-            <h3 className="font-semibold text-gray-700 mb-2">Gender:</h3>
-            <p className="text-blue-600 font-semibold text-lg capitalize">
+          <div className="bg-white rounded-xl p-6 shadow-md">
+            <h3 className="font-semibold text-gray-700 mb-3 text-lg">Gender</h3>
+            <p className="text-blue-600 font-bold text-xl capitalize">
               {demographicData.gender}
             </p>
           </div>
-          <div>
-            <h3 className="font-semibold text-gray-700 mb-2">Date:</h3>
-            <p className="text-gray-600">{currentDate}</p>
+          <div className="bg-white rounded-xl p-6 shadow-md">
+            <h3 className="font-semibold text-gray-700 mb-3 text-lg">Assessment Date</h3>
+            <p className="text-gray-600 font-semibold text-lg">{currentDate}</p>
           </div>
         </div>
       </div>
 
-      <div className="space-y-8">
-        <div className="border-l-4 border-blue-600 pl-6">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Indian Diabetes Risk Score (IDRS)
-          </h3>
-          <div className="space-y-2">
-            <p className="text-lg">
-              <span className="font-semibold">Total Score: </span>
-              <span className="text-blue-600 font-bold text-xl">{diabetesScore}</span>
-            </p>
-            <p className="text-lg">
-              Your score places you in the{' '}
-              <span className="font-semibold underline">
+      <div className="space-y-10">
+        <div className="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-blue-500">
+          <div className="flex items-center mb-6">
+            <Activity className="w-8 h-8 text-blue-600 mr-4" />
+            <h3 className="text-3xl font-bold text-gray-900">
+              Indian Diabetes Risk Score (IDRS)
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-4">
+                <span className="text-xl font-semibold text-gray-700">Total Score:</span>
+                <span className={`text-4xl font-bold bg-gradient-to-r ${getDiabetesRiskColor(diabetesScore)} bg-clip-text text-transparent`}>
+                  {diabetesScore}
+                </span>
+              </div>
+              <div className={`inline-block px-6 py-3 rounded-full text-white font-semibold text-lg bg-gradient-to-r ${getDiabetesRiskColor(diabetesScore)}`}>
                 {getDiabetesRiskCategory(diabetesScore)}
-              </span>{' '}
-              category for diabetes risk.
-            </p>
+              </div>
+            </div>
+            <div className="flex items-center justify-center">
+              <div className={`w-32 h-32 rounded-full bg-gradient-to-r ${getDiabetesRiskColor(diabetesScore)} flex items-center justify-center shadow-xl`}>
+                <span className="text-white text-3xl font-bold">{diabetesScore}</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="border-l-4 border-blue-600 pl-6">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Heart Health Risk Questionnaire
-          </h3>
-          <div className="space-y-2">
-            <p className="text-lg">
-              <span className="font-semibold">Number of "Yes" answers: </span>
-              <span className="text-blue-600 font-bold text-xl">{heartRiskScore}</span>
-            </p>
-            <p className="text-lg">
-              Your score places you in the{' '}
-              <span className="font-semibold underline">
+        <div className="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-red-500">
+          <div className="flex items-center mb-6">
+            <Heart className="w-8 h-8 text-red-600 mr-4" />
+            <h3 className="text-3xl font-bold text-gray-900">
+              Heart Health Risk Assessment
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-4">
+                <span className="text-xl font-semibold text-gray-700">Risk Factors:</span>
+                <span className={`text-4xl font-bold bg-gradient-to-r ${getHeartRiskColor(heartRiskScore)} bg-clip-text text-transparent`}>
+                  {heartRiskScore}
+                </span>
+              </div>
+              <div className={`inline-block px-6 py-3 rounded-full text-white font-semibold text-lg bg-gradient-to-r ${getHeartRiskColor(heartRiskScore)}`}>
                 {getHeartRiskCategory(heartRiskScore)}
-              </span>{' '}
-              category for Heart Health Risk.
-            </p>
+              </div>
+            </div>
+            <div className="flex items-center justify-center">
+              <div className={`w-32 h-32 rounded-full bg-gradient-to-r ${getHeartRiskColor(heartRiskScore)} flex items-center justify-center shadow-xl`}>
+                <span className="text-white text-3xl font-bold">{heartRiskScore}</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Please note</h3>
-          <ul className="space-y-2 text-gray-700">
-            <li>• These are preliminary screening test scores, not a diagnosis.</li>
-            <li>• Results should be reviewed and confirmed by your Primary Care Physician.</li>
-            <li>• For follow-up and additional guidance, contact the South Asian Center for Diabetes & Heart Health:</li>
+        <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-8">
+          <div className="flex items-center mb-6">
+            <AlertTriangle className="w-8 h-8 text-amber-600 mr-4" />
+            <h3 className="text-2xl font-bold text-gray-900">Important Notice</h3>
+          </div>
+          <ul className="space-y-3 text-gray-700 text-lg">
+            <li className="flex items-start">
+              <span className="text-amber-600 mr-3 text-xl">•</span>
+              These are preliminary screening test scores, not a diagnosis.
+            </li>
+            <li className="flex items-start">
+              <span className="text-amber-600 mr-3 text-xl">•</span>
+              Results should be reviewed and confirmed by your Primary Care Physician.
+            </li>
+            <li className="flex items-start">
+              <span className="text-amber-600 mr-3 text-xl">•</span>
+              For follow-up and additional guidance, contact the South Asian Center for Diabetes & Heart Health:
+            </li>
           </ul>
-          <div className="mt-4 text-center">
-            <p className="text-blue-600 font-semibold text-lg">+1732-947-4383</p>
-            <p className="text-blue-600 font-semibold">diabetes@sknfoundation.org</p>
+          <div className="mt-6 text-center bg-white rounded-xl p-6 shadow-md">
+            <p className="text-blue-600 font-bold text-2xl mb-2">+1732-947-4383</p>
+            <p className="text-blue-600 font-bold text-xl">diabetes@sknfoundation.org</p>
           </div>
         </div>
       </div>

@@ -33,16 +33,20 @@ const HeartHealthStep: React.FC<HeartHealthStepProps> = ({ data, updateData, onN
   }> = ({ name, value, onChange, options }) => (
     <div className="flex flex-wrap gap-4">
       {options.map((option) => (
-        <label key={option} className="flex items-center space-x-2 cursor-pointer">
+        <label key={option} className="flex items-center space-x-3 cursor-pointer group">
           <input
             type="radio"
             name={name}
             value={option}
             checked={value === option}
             onChange={(e) => onChange(e.target.value)}
-            className="w-4 h-4 text-blue-600"
+            className="w-5 h-5 text-blue-600 border-2 border-gray-300 focus:ring-blue-500 focus:ring-2"
           />
-          <span className="px-4 py-2 border rounded-full bg-white hover:bg-gray-50 transition-colors">
+          <span className={`px-6 py-3 border-2 rounded-xl font-medium transition-all duration-300 ${
+            value === option 
+              ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white border-blue-500 shadow-lg' 
+              : 'bg-white hover:bg-blue-50 border-gray-300 hover:border-blue-300 text-gray-700'
+          }`}>
             {option}
           </span>
         </label>
@@ -51,7 +55,7 @@ const HeartHealthStep: React.FC<HeartHealthStepProps> = ({ data, updateData, onN
   );
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} className="space-y-10">
       <FormField label="Do you have high blood pressure (hypertension) history?" required>
         <RadioGroup
           name="highBloodPressure"
@@ -106,17 +110,20 @@ const HeartHealthStep: React.FC<HeartHealthStepProps> = ({ data, updateData, onN
         />
       </FormField>
 
-      <div className="flex justify-between pt-6">
+      <div className="flex justify-between pt-8">
         <Button 
           type="button" 
           onClick={onPrevious}
           variant="outline" 
-          className="px-8 py-3"
+          className="px-10 py-4 text-lg font-semibold rounded-xl border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all duration-300"
         >
-          Previous
+          ← Previous
         </Button>
-        <Button type="submit" className="bg-gray-400 hover:bg-gray-500 text-white px-8 py-3">
-          Submit
+        <Button 
+          type="submit" 
+          className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+        >
+          Complete Assessment
         </Button>
       </div>
     </form>
