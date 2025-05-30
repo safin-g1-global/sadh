@@ -1,9 +1,9 @@
 
 import React from 'react';
-import HealthRiskForm from '../components/HealthRiskForm';
+import LandingPage from '../components/LandingPage';
 
 const Index = () => {
-  return <HealthRiskForm />;
+  return <LandingPage />;
 };
 
 export default Index;
