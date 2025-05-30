@@ -31,9 +31,9 @@ const DiabetesStep: React.FC<DiabetesStepProps> = ({ data, updateData, onNext, o
             <SelectValue placeholder="Select option" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="normal">Normal (Men: <37 inches, Women: <31.5 inches)</SelectItem>
+            <SelectItem value="normal">Normal (Men: &lt;37 inches, Women: &lt;31.5 inches)</SelectItem>
             <SelectItem value="elevated">Elevated (Men: 37-40 inches, Women: 31.5-35 inches)</SelectItem>
-            <SelectItem value="high">High (Men: >40 inches, Women: >35 inches)</SelectItem>
+            <SelectItem value="high">High (Men: &gt;40 inches, Women: &gt;35 inches)</SelectItem>
           </SelectContent>
         </Select>
       </FormField>
