@@ -24,13 +24,13 @@ const DiabetesStep: React.FC<DiabetesStepProps> = ({ data, updateData, onNext, o
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-10">
+    <form onSubmit={handleSubmit} className="space-y-8">
       <FormField label="Abdominal Obesity/Waist Circumference" required>
         <Select value={data.abdominalObesity} onValueChange={(value) => updateData({ abdominalObesity: value })}>
-          <SelectTrigger className="h-14 text-lg border-2 border-gray-200 focus:border-blue-500 rounded-xl">
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
             <SelectValue placeholder="Select your waist measurement category" />
           </SelectTrigger>
-          <SelectContent className="rounded-xl border-2">
+          <SelectContent className="rounded-lg border-2">
             <SelectItem value="normal">Normal (Men: &lt;37 inches, Women: &lt;31.5 inches)</SelectItem>
             <SelectItem value="elevated">Elevated (Men: 37-40 inches, Women: 31.5-35 inches)</SelectItem>
             <SelectItem value="high">High (Men: &gt;40 inches, Women: &gt;35 inches)</SelectItem>
@@ -40,10 +40,10 @@ const DiabetesStep: React.FC<DiabetesStepProps> = ({ data, updateData, onNext, o
 
       <FormField label="Physical Activity" required>
         <Select value={data.physicalActivity} onValueChange={(value) => updateData({ physicalActivity: value })}>
-          <SelectTrigger className="h-14 text-lg border-2 border-gray-200 focus:border-blue-500 rounded-xl">
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
             <SelectValue placeholder="Select your activity level" />
           </SelectTrigger>
-          <SelectContent className="rounded-xl border-2">
+          <SelectContent className="rounded-lg border-2">
             <SelectItem value="regular">Regular physical activity (≥150 min/week)</SelectItem>
             <SelectItem value="irregular">Irregular physical activity</SelectItem>
             <SelectItem value="sedentary">Sedentary lifestyle</SelectItem>
@@ -53,10 +53,10 @@ const DiabetesStep: React.FC<DiabetesStepProps> = ({ data, updateData, onNext, o
 
       <FormField label="Family History of Diabetes" required>
         <Select value={data.familyHistory} onValueChange={(value) => updateData({ familyHistory: value })}>
-          <SelectTrigger className="h-14 text-lg border-2 border-gray-200 focus:border-blue-500 rounded-xl">
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
             <SelectValue placeholder="Select family history" />
           </SelectTrigger>
-          <SelectContent className="rounded-xl border-2">
+          <SelectContent className="rounded-lg border-2">
             <SelectItem value="none">No known family history</SelectItem>
             <SelectItem value="distant">Distant relatives (grandparents, aunts, uncles, cousins)</SelectItem>
             <SelectItem value="immediate">Immediate family (parents, siblings, children)</SelectItem>
@@ -64,20 +64,20 @@ const DiabetesStep: React.FC<DiabetesStepProps> = ({ data, updateData, onNext, o
         </Select>
       </FormField>
 
-      <div className="flex justify-between pt-8">
+      <div className="flex justify-between pt-6">
         <Button 
           type="button" 
           onClick={onPrevious}
           variant="outline" 
-          className="px-10 py-4 text-lg font-semibold rounded-xl border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all duration-300"
+          className="px-6 py-3 text-base font-medium rounded-lg border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all duration-200"
         >
-          ← Previous
+          Previous
         </Button>
         <Button 
           type="submit" 
-          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-base font-medium shadow-sm hover:shadow-md transition-all duration-200"
         >
-          Next Step →
+          Next Step
         </Button>
       </div>
     </form>

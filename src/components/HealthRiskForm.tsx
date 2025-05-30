@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
-import Header from './Header';
-import ProgressIndicator from './ProgressIndicator';
+import SidebarProgressIndicator from './SidebarProgressIndicator';
 import DemographicStep from './steps/DemographicStep';
 import DiabetesStep from './steps/DiabetesStep';
 import HeartHealthStep from './steps/HeartHealthStep';
@@ -167,31 +166,61 @@ const HealthRiskForm = () => {
     }
   };
 
+  const getStepTitle = () => {
+    switch (currentStep) {
+      case 1:
+        return 'Personal info';
+      case 2:
+        return 'Diabetes Risk Assessment';
+      case 3:
+        return 'Heart Health Assessment';
+      case 4:
+        return 'Health Risk Summary';
+      default:
+        return '';
+    }
+  };
+
+  const getStepDescription = () => {
+    switch (currentStep) {
+      case 1:
+        return 'Please provide your name, email address, and phone number.';
+      case 2:
+        return 'Help us assess your diabetes risk with these questions.';
+      case 3:
+        return 'Let us evaluate your heart health with these assessments.';
+      case 4:
+        return 'Review your personalized health risk assessment results.';
+      default:
+        return '';
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <Header />
+    <div className="min-h-screen bg-gray-50 flex">
+      <SidebarProgressIndicator currentStep={currentStep} totalSteps={4} />
       
-      <main className="max-w-6xl mx-auto px-6 py-12">
-        {currentStep < 4 && (
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8 mb-8">
-            <div className="text-center mb-10">
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
-                Take the Risk Test
+      <main className="flex-1 p-8">
+        {currentStep < 4 ? (
+          <div className="max-w-2xl mx-auto">
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                {getStepTitle()}
               </h1>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-                Please fill in this short form so that we can send you a detailed report for your health.
+              <p className="text-gray-600 text-lg">
+                {getStepDescription()}
               </p>
             </div>
             
-            <ProgressIndicator currentStep={currentStep} totalSteps={3} />
-            
-            <div className="transition-all duration-500 ease-in-out">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
               {renderStep()}
             </div>
           </div>
+        ) : (
+          <div className="w-full">
+            {renderStep()}
+          </div>
         )}
-        
-        {currentStep === 4 && renderStep()}
       </main>
     </div>
   );

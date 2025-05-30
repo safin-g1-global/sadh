@@ -2,6 +2,7 @@
 import React from 'react';
 import FormField from '../FormField';
 import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface HeartHealthData {
   highBloodPressure: string;
@@ -25,105 +26,108 @@ const HeartHealthStep: React.FC<HeartHealthStepProps> = ({ data, updateData, onN
     onNext();
   };
 
-  const RadioGroup: React.FC<{ 
-    name: string; 
-    value: string; 
-    onChange: (value: string) => void; 
-    options: string[];
-  }> = ({ name, value, onChange, options }) => (
-    <div className="flex flex-wrap gap-4">
-      {options.map((option) => (
-        <label key={option} className="flex items-center space-x-3 cursor-pointer group">
-          <input
-            type="radio"
-            name={name}
-            value={option}
-            checked={value === option}
-            onChange={(e) => onChange(e.target.value)}
-            className="w-5 h-5 text-blue-600 border-2 border-gray-300 focus:ring-blue-500 focus:ring-2"
-          />
-          <span className={`px-6 py-3 border-2 rounded-xl font-medium transition-all duration-300 ${
-            value === option 
-              ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white border-blue-500 shadow-lg' 
-              : 'bg-white hover:bg-blue-50 border-gray-300 hover:border-blue-300 text-gray-700'
-          }`}>
-            {option}
-          </span>
-        </label>
-      ))}
-    </div>
-  );
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-10">
-      <FormField label="Do you have high blood pressure (hypertension) history?" required>
-        <RadioGroup
-          name="highBloodPressure"
-          value={data.highBloodPressure}
-          onChange={(value) => updateData({ highBloodPressure: value })}
-          options={['Yes', 'No', 'Not sure']}
-        />
+    <form onSubmit={handleSubmit} className="space-y-8">
+      <FormField label="High Blood Pressure" required>
+        <Select value={data.highBloodPressure} onValueChange={(value) => updateData({ highBloodPressure: value })}>
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
+            <SelectValue placeholder="Select your blood pressure status" />
+          </SelectTrigger>
+          <SelectContent className="rounded-lg border-2">
+            <SelectItem value="normal">Normal (&lt;120/80 mmHg)</SelectItem>
+            <SelectItem value="elevated">Elevated (120-129/&lt;80 mmHg)</SelectItem>
+            <SelectItem value="high-stage1">High Stage 1 (130-139/80-89 mmHg)</SelectItem>
+            <SelectItem value="high-stage2">High Stage 2 (≥140/≥90 mmHg)</SelectItem>
+            <SelectItem value="unknown">Unknown/Not measured recently</SelectItem>
+          </SelectContent>
+        </Select>
       </FormField>
 
-      <FormField label="Have you ever been diagnosed with high cholesterol or been told you have abnormal lipid level?" required>
-        <RadioGroup
-          name="cholesterol"
-          value={data.cholesterol}
-          onChange={(value) => updateData({ cholesterol: value })}
-          options={['Yes', 'No', 'Not sure']}
-        />
+      <FormField label="Cholesterol Levels" required>
+        <Select value={data.cholesterol} onValueChange={(value) => updateData({ cholesterol: value })}>
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
+            <SelectValue placeholder="Select your cholesterol status" />
+          </SelectTrigger>
+          <SelectContent className="rounded-lg border-2">
+            <SelectItem value="normal">Normal (&lt;200 mg/dL)</SelectItem>
+            <SelectItem value="borderline">Borderline high (200-239 mg/dL)</SelectItem>
+            <SelectItem value="high">High (≥240 mg/dL)</SelectItem>
+            <SelectItem value="unknown">Unknown/Not tested recently</SelectItem>
+          </SelectContent>
+        </Select>
       </FormField>
 
-      <FormField label="Do you have diabetes or prediabetes?" required>
-        <RadioGroup
-          name="diabetes"
-          value={data.diabetes}
-          onChange={(value) => updateData({ diabetes: value })}
-          options={['Yes', 'No', 'Not sure']}
-        />
+      <FormField label="Diabetes Status" required>
+        <Select value={data.diabetes} onValueChange={(value) => updateData({ diabetes: value })}>
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
+            <SelectValue placeholder="Select your diabetes status" />
+          </SelectTrigger>
+          <SelectContent className="rounded-lg border-2">
+            <SelectItem value="no">No diabetes</SelectItem>
+            <SelectItem value="prediabetes">Prediabetes</SelectItem>
+            <SelectItem value="type1">Type 1 diabetes</SelectItem>
+            <SelectItem value="type2">Type 2 diabetes</SelectItem>
+            <SelectItem value="gestational">Gestational diabetes (current/past)</SelectItem>
+          </SelectContent>
+        </Select>
       </FormField>
 
-      <FormField label="Do you currently smoke or have a history of smoking?" required>
-        <RadioGroup
-          name="smoking"
-          value={data.smoking}
-          onChange={(value) => updateData({ smoking: value })}
-          options={['Yes currently', 'Yes in the past', 'No']}
-        />
+      <FormField label="Smoking Status" required>
+        <Select value={data.smoking} onValueChange={(value) => updateData({ smoking: value })}>
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
+            <SelectValue placeholder="Select your smoking status" />
+          </SelectTrigger>
+          <SelectContent className="rounded-lg border-2">
+            <SelectItem value="never">Never smoked</SelectItem>
+            <SelectItem value="former">Former smoker (quit &gt;1 year ago)</SelectItem>
+            <SelectItem value="recent-former">Recent former smoker (quit &lt;1 year ago)</SelectItem>
+            <SelectItem value="current">Current smoker</SelectItem>
+          </SelectContent>
+        </Select>
       </FormField>
 
-      <FormField label="Do you engage in regular physical activity (e.g., at least 150 minutes of moderate activity per week)?" required>
-        <RadioGroup
-          name="physicalActivity"
-          value={data.physicalActivity}
-          onChange={(value) => updateData({ physicalActivity: value })}
-          options={['Yes', 'No']}
-        />
+      <FormField label="Physical Activity Level" required>
+        <Select value={data.physicalActivity} onValueChange={(value) => updateData({ physicalActivity: value })}>
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
+            <SelectValue placeholder="Select your activity level" />
+          </SelectTrigger>
+          <SelectContent className="rounded-lg border-2">
+            <SelectItem value="high">High (≥300 min moderate or ≥150 min vigorous per week)</SelectItem>
+            <SelectItem value="moderate">Moderate (150-299 min moderate or 75-149 min vigorous per week)</SelectItem>
+            <SelectItem value="low">Low (&lt;150 min moderate or &lt;75 min vigorous per week)</SelectItem>
+            <SelectItem value="sedentary">Sedentary (minimal physical activity)</SelectItem>
+          </SelectContent>
+        </Select>
       </FormField>
 
-      <FormField label="Does anyone in your immediate family (parents, siblings) have a history of heart disease or heart attack before age 55 (for men) or 65 (for women)?" required>
-        <RadioGroup
-          name="familyHeartHistory"
-          value={data.familyHeartHistory}
-          onChange={(value) => updateData({ familyHeartHistory: value })}
-          options={['Yes', 'No', 'Not sure']}
-        />
+      <FormField label="Family History of Heart Disease" required>
+        <Select value={data.familyHeartHistory} onValueChange={(value) => updateData({ familyHeartHistory: value })}>
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
+            <SelectValue placeholder="Select family history" />
+          </SelectTrigger>
+          <SelectContent className="rounded-lg border-2">
+            <SelectItem value="none">No known family history</SelectItem>
+            <SelectItem value="distant">Distant relatives only</SelectItem>
+            <SelectItem value="immediate-late">Immediate family (after age 60)</SelectItem>
+            <SelectItem value="immediate-early">Immediate family (before age 60)</SelectItem>
+          </SelectContent>
+        </Select>
       </FormField>
 
-      <div className="flex justify-between pt-8">
+      <div className="flex justify-between pt-6">
         <Button 
           type="button" 
           onClick={onPrevious}
           variant="outline" 
-          className="px-10 py-4 text-lg font-semibold rounded-xl border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all duration-300"
+          className="px-6 py-3 text-base font-medium rounded-lg border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all duration-200"
         >
-          ← Previous
+          Previous
         </Button>
         <Button 
           type="submit" 
-          className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-base font-medium shadow-sm hover:shadow-md transition-all duration-200"
         >
-          Complete Assessment
+          Next Step
         </Button>
       </div>
     </form>
