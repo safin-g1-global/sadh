@@ -26,6 +26,65 @@ interface DemographicStepProps {
 }
 
 const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onNext }) => {
+  const usStatesAndTerritories = [
+    { value: 'AL', label: 'Alabama' },
+    { value: 'AK', label: 'Alaska' },
+    { value: 'AZ', label: 'Arizona' },
+    { value: 'AR', label: 'Arkansas' },
+    { value: 'CA', label: 'California' },
+    { value: 'CO', label: 'Colorado' },
+    { value: 'CT', label: 'Connecticut' },
+    { value: 'DE', label: 'Delaware' },
+    { value: 'FL', label: 'Florida' },
+    { value: 'GA', label: 'Georgia' },
+    { value: 'HI', label: 'Hawaii' },
+    { value: 'ID', label: 'Idaho' },
+    { value: 'IL', label: 'Illinois' },
+    { value: 'IN', label: 'Indiana' },
+    { value: 'IA', label: 'Iowa' },
+    { value: 'KS', label: 'Kansas' },
+    { value: 'KY', label: 'Kentucky' },
+    { value: 'LA', label: 'Louisiana' },
+    { value: 'ME', label: 'Maine' },
+    { value: 'MD', label: 'Maryland' },
+    { value: 'MA', label: 'Massachusetts' },
+    { value: 'MI', label: 'Michigan' },
+    { value: 'MN', label: 'Minnesota' },
+    { value: 'MS', label: 'Mississippi' },
+    { value: 'MO', label: 'Missouri' },
+    { value: 'MT', label: 'Montana' },
+    { value: 'NE', label: 'Nebraska' },
+    { value: 'NV', label: 'Nevada' },
+    { value: 'NH', label: 'New Hampshire' },
+    { value: 'NJ', label: 'New Jersey' },
+    { value: 'NM', label: 'New Mexico' },
+    { value: 'NY', label: 'New York' },
+    { value: 'NC', label: 'North Carolina' },
+    { value: 'ND', label: 'North Dakota' },
+    { value: 'OH', label: 'Ohio' },
+    { value: 'OK', label: 'Oklahoma' },
+    { value: 'OR', label: 'Oregon' },
+    { value: 'PA', label: 'Pennsylvania' },
+    { value: 'RI', label: 'Rhode Island' },
+    { value: 'SC', label: 'South Carolina' },
+    { value: 'SD', label: 'South Dakota' },
+    { value: 'TN', label: 'Tennessee' },
+    { value: 'TX', label: 'Texas' },
+    { value: 'UT', label: 'Utah' },
+    { value: 'VT', label: 'Vermont' },
+    { value: 'VA', label: 'Virginia' },
+    { value: 'WA', label: 'Washington' },
+    { value: 'WV', label: 'West Virginia' },
+    { value: 'WI', label: 'Wisconsin' },
+    { value: 'WY', label: 'Wyoming' },
+    { value: 'DC', label: 'District of Columbia' },
+    { value: 'AS', label: 'American Samoa' },
+    { value: 'GU', label: 'Guam' },
+    { value: 'MP', label: 'Northern Mariana Islands' },
+    { value: 'PR', label: 'Puerto Rico' },
+    { value: 'VI', label: 'U.S. Virgin Islands' }
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onNext();
@@ -91,7 +150,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
             <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
               <SelectValue placeholder="Select gender" />
             </SelectTrigger>
-            <SelectContent className="rounded-lg border-2">
+            <SelectContent className="rounded-lg border-2 bg-white z-50">
               <SelectItem value="male">Male</SelectItem>
               <SelectItem value="female">Female</SelectItem>
               <SelectItem value="other">Other</SelectItem>
@@ -112,13 +171,18 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
       </FormField>
 
       <FormField label="State" required>
-        <Input
-          type="text"
-          placeholder="Enter your state"
-          value={data.state}
-          onChange={(e) => updateData({ state: e.target.value })}
-          className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg"
-        />
+        <Select value={data.state} onValueChange={(value) => updateData({ state: value })}>
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
+            <SelectValue placeholder="Select your state" />
+          </SelectTrigger>
+          <SelectContent className="rounded-lg border-2 bg-white z-50 max-h-60">
+            {usStatesAndTerritories.map((state) => (
+              <SelectItem key={state.value} value={state.value}>
+                {state.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </FormField>
 
       <FormField label="Language" required>
@@ -156,7 +220,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
           <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
             <SelectValue placeholder="Select contact preference" />
           </SelectTrigger>
-          <SelectContent className="rounded-lg border-2">
+          <SelectContent className="rounded-lg border-2 bg-white z-50">
             <SelectItem value="email">Email</SelectItem>
             <SelectItem value="phone">Phone</SelectItem>
           </SelectContent>
