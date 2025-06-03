@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import SidebarProgressIndicator from './SidebarProgressIndicator';
+import TopProgressIndicator from './TopProgressIndicator';
 import DemographicStep from './steps/DemographicStep';
 import DiabetesStep from './steps/DiabetesStep';
 import HeartHealthStep from './steps/HeartHealthStep';
@@ -197,27 +196,27 @@ const HealthRiskForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <SidebarProgressIndicator currentStep={currentStep} totalSteps={4} />
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <TopProgressIndicator currentStep={currentStep} totalSteps={4} />
       
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-4 md:p-6 lg:p-8">
         {currentStep < 4 ? (
-          <div className="max-w-2xl mx-auto">
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-6 md:mb-8 text-center md:text-left">
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
                 {getStepTitle()}
               </h1>
-              <p className="text-gray-600 text-lg">
+              <p className="text-gray-600 text-base md:text-lg">
                 {getStepDescription()}
               </p>
             </div>
             
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 md:p-6 lg:p-8">
               {renderStep()}
             </div>
           </div>
         ) : (
-          <div className="w-full">
+          <div className="w-full max-w-6xl mx-auto">
             {renderStep()}
           </div>
         )}
