@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import SidebarProgressIndicator from "./SidebarProgressIndicator";
 import DemographicStep from "./steps/DemographicStep";
@@ -303,7 +304,7 @@ const HealthRiskForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="bg-gray-50 flex flex-col">
       {!showConsent && !showEmailModal && (
         <div className="w-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 py-4 md:py-8">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

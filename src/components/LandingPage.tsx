@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,7 +11,6 @@ import {
   Star,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import Header from "./Header";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -57,9 +57,7 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <Header />
-
+    <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 text-white">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -303,67 +301,6 @@ const LandingPage = () => {
           </Button>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-orange-400 via-yellow-400 to-green-400 rounded-full flex items-center justify-center">
-                  <div className="w-6 h-6 bg-blue-600 rounded-full"></div>
-                </div>
-                <span className="text-xl font-bold">
-                  South Asian Health Center
-                </span>
-              </div>
-              <p className="text-gray-400">
-                Dedicated to improving health outcomes in the South Asian
-                community through early detection and prevention.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Health Resources
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Privacy Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
-              <div className="space-y-2 text-gray-400">
-                <p>Email: info@southasianhealthcenter.org</p>
-                <p>Phone: (555) 123-4567</p>
-                <p>Address: 123 Health St, Medical District</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>
-              &copy; 2024 South Asian Center for Diabetes and Heart Health. All
-              rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
