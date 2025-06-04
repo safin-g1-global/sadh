@@ -18,10 +18,6 @@ const ResultsStep: React.FC<ResultsStepProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  console.log(demographicData);
-  console.log(diabetesData);
-  console.log(heartHealthData);
-
   // Calculate diabetes risk score using the new formula
   const calculateDiabetesScore = () => {
     let score = 0;
