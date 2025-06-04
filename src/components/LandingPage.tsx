@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -91,7 +90,7 @@ const LandingPage = () => {
                 <Button
                   variant="link"
                   size="lg"
-                  className="hover:text-white text-lg px-8 py-6 transition-all duration-300"
+                  className="text-yellow hover:text-white text-lg px-8 py-6 transition-all duration-300"
                 >
                   Learn More
                 </Button>
