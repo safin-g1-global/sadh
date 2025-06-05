@@ -92,7 +92,6 @@ const EmailCollectionModal: React.FC<EmailCollectionModalProps> = ({
             <Button
               onClick={handleInterested}
               className="w-full sm:w-auto px-6 bg-white text-gray-900 hover:bg-white/90"
-              className="w-full sm:w-auto px-6 bg-white text-gray-900 hover:bg-white/90"
             >
               Interested
             </Button>

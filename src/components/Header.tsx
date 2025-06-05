@@ -41,7 +41,11 @@ const Header = () => {
           className="flex items-center space-x-3 cursor-pointer"
           onClick={() => handleNavigation("/")}
         >
-          <img src={logo} alt="South Asian Center Logo" className="h-12 w-auto" />
+          <img
+            src={logo}
+            alt="South Asian Center Logo"
+            className="h-12 w-auto"
+          />
         </div>
 
         {/* Desktop Navigation */}
@@ -65,14 +69,23 @@ const Header = () => {
         <div className="lg:hidden">
           <Drawer open={isOpen} onOpenChange={setIsOpen}>
             <DrawerTrigger asChild>
-              <button className="p-2 hover:bg-blue-800 rounded-lg transition-colors">
+              <button className="p-2 rounded-lg transition-colors">
                 <Menu size={24} />
               </button>
             </DrawerTrigger>
             <DrawerContent className="bg-blue-900 text-white border-blue-700">
               <DrawerHeader className="flex items-center justify-between">
                 <DrawerTitle className="text-white">
-                  Navigation Menu
+                  <div
+                    className="flex items-center space-x-3 cursor-pointer"
+                    onClick={() => handleNavigation("/")}
+                  >
+                    <img
+                      src={logo}
+                      alt="South Asian Center Logo"
+                      className="h-12 w-auto"
+                    />
+                  </div>
                 </DrawerTitle>
                 <button
                   onClick={() => setIsOpen(false)}
