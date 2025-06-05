@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import {
   Dialog,
@@ -48,20 +49,20 @@ const EmailCollectionModal: React.FC<EmailCollectionModalProps> = ({
   };
 
   return (
-    <Dialog open={isOpen}>
-      <DialogContent className="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[500px] max-h-[90vh] overflow-y-auto">
+    <Dialog open={isOpen} onOpenChange={() => {}}>
+      <DialogContent className="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[500px] max-h-[90vh] overflow-y-auto bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 border-0">
         <DialogHeader>
-          <DialogTitle className="text-xl sm:text-2xl font-bold text-gray-900">
+          <DialogTitle className="text-xl sm:text-2xl font-bold text-white">
             Thank you for your Interest
           </DialogTitle>
         </DialogHeader>
-        <DialogDescription className="text-sm sm:text-base text-gray-600">
+        <DialogDescription className="text-sm sm:text-base text-white/90">
           Please provide your email if you are interested in receiving education
           material from us
         </DialogDescription>
         <div className="space-y-4 mt-4">
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-sm sm:text-base">Email</Label>
+            <Label htmlFor="email" className="text-sm sm:text-base text-white">Email</Label>
             <Input
               id="email"
               type="email"
@@ -71,21 +72,21 @@ const EmailCollectionModal: React.FC<EmailCollectionModalProps> = ({
                 setEmail(e.target.value);
                 setError("");
               }}
-              className="text-sm sm:text-base"
+              className="text-sm sm:text-base bg-white/20 border-white/30 text-white placeholder:text-white/70"
             />
-            {error && <p className="text-red-500 text-xs sm:text-sm">{error}</p>}
+            {error && <p className="text-red-200 text-xs sm:text-sm">{error}</p>}
           </div>
           <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4">
             <Button
               variant="outline"
               onClick={handleNotInterested}
-              className="w-full sm:w-auto px-6"
+              className="w-full sm:w-auto px-6 bg-white/20 border-white/30 text-white hover:bg-white/30"
             >
               Not Interested
             </Button>
             <Button
               onClick={handleInterested}
-              className="w-full sm:w-auto px-6"
+              className="w-full sm:w-auto px-6 bg-white text-gray-900 hover:bg-white/90"
             >
               Interested
             </Button>
@@ -96,4 +97,4 @@ const EmailCollectionModal: React.FC<EmailCollectionModalProps> = ({
   );
 };
 
-export default EmailCollectionModal; 
+export default EmailCollectionModal;
