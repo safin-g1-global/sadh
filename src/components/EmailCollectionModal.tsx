@@ -11,7 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
-import { X } from "lucide-react";
+import supabase from "@/supabase-client";
+import { Loader2 } from "lucide-react";
 
 interface EmailCollectionModalProps {
   isOpen: boolean;
@@ -24,6 +25,7 @@ const EmailCollectionModal: React.FC<EmailCollectionModalProps> = ({
 }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const validateEmail = (email: string) => {
@@ -41,8 +43,20 @@ const EmailCollectionModal: React.FC<EmailCollectionModalProps> = ({
       return;
     }
 
-    // TODO: Save email to database
-    navigate("/");
+    setIsLoading(true);
+    try {
+      // Save email to database
+      const { error } = await supabase.from("emails").insert({ email });
+      if (error) throw error;
+      
+      // Navigate to home page after successful submission
+      navigate("/");
+    } catch (err) {
+      console.error("Error saving email:", err);
+      setError("Failed to save email. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleNotInterested = () => {
@@ -76,6 +90,7 @@ const EmailCollectionModal: React.FC<EmailCollectionModalProps> = ({
                 setError("");
               }}
               className="text-sm sm:text-base bg-white/20 border-white/30 text-white placeholder:text-white/70 outline-none"
+              disabled={isLoading}
             />
             {error && (
               <p className="text-yellow-200 text-xs sm:text-sm">{error}</p>
@@ -86,14 +101,23 @@ const EmailCollectionModal: React.FC<EmailCollectionModalProps> = ({
               variant="outline"
               onClick={handleNotInterested}
               className="w-full sm:w-auto px-6 bg-white/20 border-white/30 text-white hover:bg-white/30"
+              disabled={isLoading}
             >
               Not Interested
             </Button>
             <Button
               onClick={handleInterested}
               className="w-full sm:w-auto px-6 bg-white text-gray-900 hover:bg-white/90"
+              disabled={isLoading}
             >
-              Interested
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Saving...
+                </>
+              ) : (
+                "Interested"
+              )}
             </Button>
           </div>
         </div>
