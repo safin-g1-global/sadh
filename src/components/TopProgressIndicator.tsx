@@ -16,11 +16,11 @@ const TopProgressIndicator: React.FC<TopProgressIndicatorProps> = ({ currentStep
   ];
 
   return (
-    <div className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 py-4 px-4 md:py-6 md:px-8">
+    <div className="w-full bg-gradient-to-r from-[#1A6A87] via-[#3B4295] to-[#CA4F38] py-4 px-4 md:py-6 md:px-8">
       {/* Background decorative elements - hidden on mobile */}
-      <div className="absolute top-0 left-0 w-16 h-16 bg-orange-400 rounded-full opacity-60 -mt-8 -ml-8 hidden md:block"></div>
+      <div className="absolute top-0 left-0 w-16 h-16 bg-[#E68137] rounded-full opacity-60 -mt-8 -ml-8 hidden md:block"></div>
       <div className="absolute top-2 right-8 w-4 h-4 bg-white rounded transform rotate-45 opacity-60 hidden md:block"></div>
-      <div className="absolute top-4 right-4 w-2 h-2 bg-pink-300 rounded transform rotate-45 opacity-80 hidden md:block"></div>
+      <div className="absolute top-4 right-4 w-2 h-2 bg-[#C7D33C] rounded transform rotate-45 opacity-80 hidden md:block"></div>
       
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Mobile Progress - Single row with dots */}
@@ -32,7 +32,7 @@ const TopProgressIndicator: React.FC<TopProgressIndicatorProps> = ({ currentStep
                   index + 1 < currentStep
                     ? 'bg-white/30 backdrop-blur-sm'
                     : index + 1 === currentStep
-                    ? 'bg-white text-blue-600 shadow-lg'
+                    ? 'bg-white text-[#1A6A87] shadow-lg'
                     : 'bg-white/20 backdrop-blur-sm'
                 }`}
               >
@@ -61,7 +61,7 @@ const TopProgressIndicator: React.FC<TopProgressIndicatorProps> = ({ currentStep
                     index + 1 < currentStep
                       ? 'bg-white/30 backdrop-blur-sm'
                       : index + 1 === currentStep
-                      ? 'bg-white text-blue-600 shadow-lg'
+                      ? 'bg-white text-[#1A6A87] shadow-lg'
                       : 'bg-white/20 backdrop-blur-sm'
                   }`}
                 >

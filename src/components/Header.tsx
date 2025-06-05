@@ -34,15 +34,15 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-blue-900 text-white px-4 md:px-6 py-4 sticky top-0 z-50 shadow-lg">
+    <header className="bg-[#1A6A87] text-white px-4 md:px-6 py-4 sticky top-0 z-50 shadow-lg">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Logo Section */}
         <div 
           className="flex items-center space-x-3 cursor-pointer"
           onClick={() => handleNavigation('/')}
         >
-          <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-orange-400 via-yellow-400 to-green-400 rounded-full flex items-center justify-center">
-            <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-600 rounded-full"></div>
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-[#E68137] via-[#C7D33C] to-[#285D3C] rounded-full flex items-center justify-center">
+            <div className="w-6 h-6 md:w-8 md:h-8 bg-[#3B4295] rounded-full"></div>
           </div>
           <div>
             <h1 className="text-lg md:text-xl font-bold">SOUTH ASIAN CENTER</h1>
@@ -56,9 +56,9 @@ const Header = () => {
             <button
               key={item.path}
               onClick={() => handleNavigation(item.path)}
-              className={`text-sm font-medium transition-colors duration-200 hover:text-yellow-300 relative ${
+              className={`text-sm font-medium transition-colors duration-200 hover:text-[#C7D33C] relative ${
                 isActivePath(item.path) 
-                  ? 'text-yellow-300 after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-0.5 after:bg-yellow-300' 
+                  ? 'text-[#C7D33C] after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-0.5 after:bg-[#C7D33C]' 
                   : 'text-white'
               }`}
             >
@@ -71,16 +71,16 @@ const Header = () => {
         <div className="lg:hidden">
           <Drawer open={isOpen} onOpenChange={setIsOpen}>
             <DrawerTrigger asChild>
-              <button className="p-2 hover:bg-blue-800 rounded-lg transition-colors">
+              <button className="p-2 hover:bg-[#11A8DF] rounded-lg transition-colors">
                 <Menu size={24} />
               </button>
             </DrawerTrigger>
-            <DrawerContent className="bg-blue-900 text-white border-blue-700">
+            <DrawerContent className="bg-[#1A6A87] text-white border-[#11A8DF]">
               <DrawerHeader className="flex items-center justify-between">
                 <DrawerTitle className="text-white">Navigation Menu</DrawerTitle>
                 <button 
                   onClick={() => setIsOpen(false)}
-                  className="p-2 hover:bg-blue-800 rounded-lg transition-colors"
+                  className="p-2 hover:bg-[#11A8DF] rounded-lg transition-colors"
                 >
                   <X size={20} />
                 </button>
@@ -90,9 +90,9 @@ const Header = () => {
                   <button
                     key={item.path}
                     onClick={() => handleNavigation(item.path)}
-                    className={`text-left p-4 rounded-lg transition-colors duration-200 hover:bg-blue-800 ${
+                    className={`text-left p-4 rounded-lg transition-colors duration-200 hover:bg-[#11A8DF] ${
                       isActivePath(item.path) 
-                        ? 'bg-blue-800 text-yellow-300 border-l-4 border-yellow-300' 
+                        ? 'bg-[#11A8DF] text-[#C7D33C] border-l-4 border-[#C7D33C]' 
                         : 'text-white'
                     }`}
                   >

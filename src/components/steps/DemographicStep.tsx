@@ -99,7 +99,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
             placeholder="e.g. Stephen"
             value={data.firstName}
             onChange={(e) => updateData({ firstName: e.target.value })}
-            className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg"
+            className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg"
           />
         </FormField>
 
@@ -109,7 +109,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
             placeholder="e.g. King"
             value={data.lastName}
             onChange={(e) => updateData({ lastName: e.target.value })}
-            className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg"
+            className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg"
           />
         </FormField>
       </div>
@@ -120,7 +120,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
           placeholder="e.g. stephenking@lorem.com"
           value={data.email}
           onChange={(e) => updateData({ email: e.target.value })}
-          className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg"
+          className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg"
         />
       </FormField>
 
@@ -130,7 +130,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
           placeholder="e.g. +57 313 111 1111"
           value={data.phone}
           onChange={(e) => updateData({ phone: e.target.value })}
-          className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg"
+          className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg"
         />
       </FormField>
 
@@ -141,13 +141,13 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
             placeholder="Enter your age"
             value={data.age}
             onChange={(e) => updateData({ age: e.target.value })}
-            className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg"
+            className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg"
           />
         </FormField>
 
         <FormField label="Gender" required>
           <Select value={data.gender} onValueChange={(value) => updateData({ gender: value })}>
-            <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
+            <SelectTrigger className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg">
               <SelectValue placeholder="Select gender" />
             </SelectTrigger>
             <SelectContent className="rounded-lg border-2 bg-white z-50">
@@ -166,13 +166,13 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
           placeholder="Enter your city"
           value={data.city}
           onChange={(e) => updateData({ city: e.target.value })}
-          className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg"
+          className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg"
         />
       </FormField>
 
       <FormField label="State" required>
         <Select value={data.state} onValueChange={(value) => updateData({ state: value })}>
-          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg">
             <SelectValue placeholder="Select your state" />
           </SelectTrigger>
           <SelectContent className="rounded-lg border-2 bg-white z-50 max-h-60">
@@ -191,7 +191,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
           placeholder="Enter your language"
           value={data.language}
           onChange={(e) => updateData({ language: e.target.value })}
-          className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg"
+          className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg"
         />
       </FormField>
 
@@ -201,7 +201,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
           placeholder="Enter your country of origin"
           value={data.countryOfOrigin}
           onChange={(e) => updateData({ countryOfOrigin: e.target.value })}
-          className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg"
+          className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg"
         />
       </FormField>
 
@@ -211,13 +211,13 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
           placeholder="Enter your religion"
           value={data.religion}
           onChange={(e) => updateData({ religion: e.target.value })}
-          className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg"
+          className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg"
         />
       </FormField>
 
       <FormField label="Contact Preference" required>
         <Select value={data.contactPreference} onValueChange={(value) => updateData({ contactPreference: value })}>
-          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
+          <SelectTrigger className="h-12 text-base border-gray-300 focus:border-[#1A6A87] rounded-lg">
             <SelectValue placeholder="Select contact preference" />
           </SelectTrigger>
           <SelectContent className="rounded-lg border-2 bg-white z-50">
@@ -230,7 +230,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({ data, updateData, onN
       <div className="flex justify-end pt-6">
         <Button 
           type="submit" 
-          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-base font-medium shadow-sm hover:shadow-md transition-all duration-200"
+          className="bg-[#1A6A87] hover:bg-[#11A8DF] text-white px-8 py-3 rounded-lg text-base font-medium shadow-sm hover:shadow-md transition-all duration-200"
         >
           Next Step
         </Button>
