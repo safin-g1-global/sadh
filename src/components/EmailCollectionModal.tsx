@@ -5,11 +5,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
+import { X } from "lucide-react";
 
 interface EmailCollectionModalProps {
   isOpen: boolean;
@@ -89,6 +91,7 @@ const EmailCollectionModal: React.FC<EmailCollectionModalProps> = ({
             </Button>
             <Button
               onClick={handleInterested}
+              className="w-full sm:w-auto px-6 bg-white text-gray-900 hover:bg-white/90"
               className="w-full sm:w-auto px-6 bg-white text-gray-900 hover:bg-white/90"
             >
               Interested
