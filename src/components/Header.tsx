@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 import {
   Drawer,
   DrawerContent,
@@ -17,10 +18,10 @@ const Header = () => {
   const menuItems = [
     { label: "Home", path: "/" },
     { label: "Health Assessment", path: "/assessment" },
-    { label: "About Us", path: "/about" },
-    { label: "Services", path: "/services" },
-    { label: "Resources", path: "/resources" },
-    { label: "Contact", path: "/contact" },
+    // { label: "About Us", path: "/about" },
+    // { label: "Services", path: "/services" },
+    // { label: "Resources", path: "/resources" },
+    // { label: "Contact", path: "/contact" },
   ];
 
   const handleNavigation = (path: string) => {
@@ -40,15 +41,7 @@ const Header = () => {
           className="flex items-center space-x-3 cursor-pointer"
           onClick={() => handleNavigation("/")}
         >
-          <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-orange-400 via-yellow-400 to-green-400 rounded-full flex items-center justify-center">
-            <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-600 rounded-full"></div>
-          </div>
-          <div>
-            <h1 className="text-lg md:text-xl font-bold">SOUTH ASIAN CENTER</h1>
-            <p className="text-xs md:text-sm opacity-90">
-              FOR DIABETES AND HEART HEALTH
-            </p>
-          </div>
+          <img src={logo} alt="South Asian Center Logo" className="h-12 w-auto" />
         </div>
 
         {/* Desktop Navigation */}

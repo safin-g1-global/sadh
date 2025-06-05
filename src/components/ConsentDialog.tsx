@@ -20,19 +20,19 @@ const ConsentDialog: React.FC<ConsentDialogProps> = ({
   onDeny,
 }) => {
   return (
-    <Dialog open={isOpen}>
-      <DialogContent className="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[600px] max-h-[90vh] overflow-y-auto">
+    <Dialog open={isOpen} onOpenChange={() => {}}>
+      <DialogContent className="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[600px] max-h-[90vh] overflow-y-auto bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 border-0">
         <DialogHeader>
-          <DialogTitle className="text-xl sm:text-2xl font-bold text-gray-900">
+          <DialogTitle className="text-xl sm:text-2xl font-bold text-white">
             Welcome to SADH Rapid Risk Testing Services
           </DialogTitle>
         </DialogHeader>
-        <DialogDescription className="text-gray-600 space-y-3 sm:space-y-4 text-sm sm:text-base">
+        <DialogDescription className="text-white/90 space-y-3 sm:space-y-4 text-sm sm:text-base">
           <p>
-            By clicking Accept button below I consent to participate in the Rapid
-            Risk Testing Service, including collecting basic demographics and my
-            health information and assessing my risk factors through biometrics and
-            a blood test.
+            By clicking Accept button below I consent to participate in the
+            Rapid Risk Testing Service, including collecting basic demographics
+            and my health information and assessing my risk factors through
+            biometrics and a blood test.
           </p>
           <p>
             I understand that my results will be kept confidential. I understand
@@ -44,13 +44,13 @@ const ConsentDialog: React.FC<ConsentDialogProps> = ({
           <Button
             variant="outline"
             onClick={onDeny}
-            className="w-full sm:w-auto px-6"
+            className="w-full sm:w-auto px-6 bg-white/20 border-white/30 text-white hover:bg-white/30"
           >
             Deny
           </Button>
           <Button
             onClick={onAccept}
-            className="w-full sm:w-auto px-6"
+            className="w-full sm:w-auto px-6 bg-white text-gray-900 hover:bg-white/90"
           >
             Accept
           </Button>

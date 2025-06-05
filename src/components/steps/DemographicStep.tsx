@@ -248,6 +248,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({
             className={`h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg ${
               errors.phone ? "border-red-500" : ""
             }`}
+            maxLength={10}
           />
         </FormField>
       </div>
@@ -334,7 +335,7 @@ const DemographicStep: React.FC<DemographicStepProps> = ({
         /> */}
           <Select
             value={data.state}
-            onValueChange={(value) => updateData({ state: value })}
+            onValueChange={(value) => handleFieldChange("state", value)}
           >
             <SelectTrigger className="h-12 text-base border-gray-300 focus:border-blue-500 rounded-lg">
               <SelectValue placeholder="Select your state" />
@@ -410,8 +411,9 @@ const DemographicStep: React.FC<DemographicStepProps> = ({
               <SelectValue placeholder="Select contact preference" />
             </SelectTrigger>
             <SelectContent className="rounded-lg border-2">
-              <SelectItem value="email">Email</SelectItem>
-              <SelectItem value="phone">Phone</SelectItem>
+              <SelectItem value="phone">Phone call</SelectItem>
+              <SelectItem value="sms">SMS</SelectItem>
+              <SelectItem value="email">eMail</SelectItem>
             </SelectContent>
           </Select>
         </FormField>
