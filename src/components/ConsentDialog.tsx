@@ -21,7 +21,7 @@ const ConsentDialog: React.FC<ConsentDialogProps> = ({
   onDeny,
 }) => {
   return (
-    <Dialog open={isOpen} onOpenChange={() => {}}>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onDeny()}>
       <DialogContent className="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[600px] max-h-[90vh] overflow-y-auto bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 border-0">
         <DialogHeader>
           <DialogTitle className="text-xl sm:text-2xl font-bold text-white">

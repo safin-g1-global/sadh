@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   Dialog,
@@ -49,7 +48,7 @@ const EmailCollectionModal: React.FC<EmailCollectionModalProps> = ({
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={() => {}}>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[500px] max-h-[90vh] overflow-y-auto bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 border-0">
         <DialogHeader>
           <DialogTitle className="text-xl sm:text-2xl font-bold text-white">
