@@ -105,7 +105,7 @@ const DiabetesStep: React.FC<DiabetesStepProps> = ({
             <SelectItem value={gender === "male" ? "<90" : "<80"}>
               {gender === "male" ? "Waist < 90 cm" : "Waist < 80 cm"}
             </SelectItem>
-            <SelectItem value={gender === "male" ? "90-99" : "<80"}>
+            <SelectItem value={gender === "male" ? "90-99" : "80-89"}>
               {gender === "male" ? "Waist 90-99 cm" : "Waist 80-89 cm"}
             </SelectItem>
             <SelectItem value={gender === "male" ? ">=100" : ">=90"}>

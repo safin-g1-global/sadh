@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import SidebarProgressIndicator from "./SidebarProgressIndicator";
 import DemographicStep from "./steps/DemographicStep";
@@ -110,6 +109,8 @@ const HealthRiskForm = () => {
 
   const nextStep = async () => {
     setCurrentStep((prev) => prev + 1);
+    // Scroll to top of the form
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (currentStep === 3) {
       const patientData = {
@@ -171,7 +172,13 @@ const HealthRiskForm = () => {
       console.log(error);
     }
   };
-  const prevStep = () => setCurrentStep((prev) => prev - 1);
+
+  const prevStep = () => {
+    setCurrentStep((prev) => prev - 1);
+    // Scroll to top of the form
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const resetForm = () => {
     setCurrentStep(1);
     setFormData({
